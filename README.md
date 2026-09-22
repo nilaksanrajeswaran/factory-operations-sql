@@ -87,6 +87,41 @@ This project demonstrates:
 3. Run `seed_data.sql`.
 4. Run the queries in `analysis.sql`.
 
+
+# Power BI Report
+
+## Purpose
+
+This report helps production and warehouse managers identify areas for investigation across downtime, throughput, product quality, picking exceptions, and shipping performance. Interactive selections let users explore the results without editing SQL queries.
+
+## Data Modelling 
+
+Production data is modelled at one row per production run. Downtime and defects are aggregated to that grain before merging, preventing duplicate production totals.
+
+Picking exceptions are counted per order item before merging into the order-items table. Shipping SLA is calculated separately at order level.
+
+Single-direction relationships keep filtering predictable. Product selections filter production runs and order items but do not filter order-level SLA results. Warehouse date selections use the date an order was placed.
+
+## Validation
+
+Power BI results were compared with PostgreSQL queries, including:
+
+- 3,765 units produced across 42 recorded run hours.
+- 99 reported defective units.
+- 10 picking exceptions affecting 6 of 10 order items.
+- 2 late shipments among 5 completed orders: a 40% SLA miss rate.
+
+Merge row counts were checked, and a report refresh completed successfully with the validated totals unchanged.
+
+## Assumptions and Limitations
+
+- The project uses fictional sample data covering September 10-11, 2026. Results do not establish long-term performance.
+- Defect rate assumes defective units are not counted twice across entries within a run. The data lacks units-level identifiers to verify this.
+- Downtime calculations assume events on the same line do not overlap. A SQL validation check found no such overlaps in the current dataset.
+- "Scheduled hours" represents recorded run intervals, including downtime— not total available factory capactity.
+- Picking exceptions count recorded events, not affected units.
+- SLA miss rate excludes unshipped orders.
+
 ## Notes
 
 The dataset used in this project is fictional and was created for demonstration and portfolio purposes.
