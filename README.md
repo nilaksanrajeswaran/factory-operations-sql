@@ -97,6 +97,22 @@ This project demonstrates:
 #### Warehouse Overview
 ![Warehouse Overview](warehouse-overview.png)
 
+### Open the report
+
+1. Download [Factory Operations.pbix](Factory%20Operations.pbix).
+2. Open it in Power BI Desktop.
+3. Explore the Production Overview, Warehouse Overview, and Validation pages.
+
+The report includes imported sample data, so it can be explored without
+connecting to PostgreSQL.
+
+To refresh the data, create and seed the PostgreSQL database using
+schema.sql and seed_data.sql. Update the report's PostgreSQL connection
+settings to your server and database, and provide your own credentials.
+
+[validation.sql](validation.sql) contains the saved check for overlapping
+downtime events on the same production line.
+
 ### Purpose
 
 This report helps production and warehouse managers identify areas for investigation across downtime, throughput, product quality, picking exceptions, and shipping performance. Interactive selections let users explore the results without editing SQL queries.
