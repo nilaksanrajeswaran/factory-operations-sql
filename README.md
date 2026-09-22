@@ -127,7 +127,7 @@ Merge row counts were checked, and a report refresh completed successfully with 
 - Downtime calculations assume events on the same line do not overlap. A SQL validation check found no such overlaps in the current dataset.
 - "Scheduled hours" represents recorded run intervals, including downtime— not total available factory capactity.
 - Picking exceptions count recorded events, not affected units.
-- SLA miss rate excludes unshipped orders.
+- SLA miss rate excludes orders not shipped.
 
 ### Notes
 
