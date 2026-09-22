@@ -87,14 +87,21 @@ This project demonstrates:
 3. Run `seed_data.sql`.
 4. Run the queries in `analysis.sql`.
 
+## Power BI Report
 
-# Power BI Report
+### Report Previews
 
-## Purpose
+#### Production Overview
+![Production Overview](production-overview.png)
+
+#### Warehouse Overview
+![Warehouse Overview](warehouse-overview.png)
+
+### Purpose
 
 This report helps production and warehouse managers identify areas for investigation across downtime, throughput, product quality, picking exceptions, and shipping performance. Interactive selections let users explore the results without editing SQL queries.
 
-## Data Modelling 
+### Data Modelling 
 
 Production data is modelled at one row per production run. Downtime and defects are aggregated to that grain before merging, preventing duplicate production totals.
 
@@ -102,7 +109,7 @@ Picking exceptions are counted per order item before merging into the order-item
 
 Single-direction relationships keep filtering predictable. Product selections filter production runs and order items but do not filter order-level SLA results. Warehouse date selections use the date an order was placed.
 
-## Validation
+### Validation
 
 Power BI results were compared with PostgreSQL queries, including:
 
@@ -113,7 +120,7 @@ Power BI results were compared with PostgreSQL queries, including:
 
 Merge row counts were checked, and a report refresh completed successfully with the validated totals unchanged.
 
-## Assumptions and Limitations
+### Assumptions and Limitations
 
 - The project uses fictional sample data covering September 10-11, 2026. Results do not establish long-term performance.
 - Defect rate assumes defective units are not counted twice across entries within a run. The data lacks units-level identifiers to verify this.
@@ -122,6 +129,6 @@ Merge row counts were checked, and a report refresh completed successfully with 
 - Picking exceptions count recorded events, not affected units.
 - SLA miss rate excludes unshipped orders.
 
-## Notes
+### Notes
 
 The dataset used in this project is fictional and was created for demonstration and portfolio purposes.
